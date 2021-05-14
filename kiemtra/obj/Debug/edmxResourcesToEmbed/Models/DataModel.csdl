@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WebProgramming_HTAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="DienThoai">
+    <Key>
+      <PropertyRef Name="MaDienThoai" />
+    </Key>
+    <Property Name="MaDienThoai" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaThuongHieu" Type="Int32" />
+    <Property Name="TenDienThoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="GiaTien" Type="Double" />
+    <Property Name="ChietKhau" Type="Double" />
+    <Property Name="SPMoi" Type="Boolean" />
+    <Property Name="SPBanChay" Type="Boolean" />
+    <Property Name="Anh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Mota" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ThuongHieu" Relationship="Self.FK_DienThoai_ThuongHieu" FromRole="DienThoai" ToRole="ThuongHieu" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ThuongHieu">
+    <Key>
+      <PropertyRef Name="MaThuongHieu" />
+    </Key>
+    <Property Name="MaThuongHieu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenThuongHieu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="XuatXu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="DienThoais" Relationship="Self.FK_DienThoai_ThuongHieu" FromRole="ThuongHieu" ToRole="DienThoai" />
+  </EntityType>
+  <Association Name="FK_DienThoai_ThuongHieu">
+    <End Role="ThuongHieu" Type="Self.ThuongHieu" Multiplicity="0..1" />
+    <End Role="DienThoai" Type="Self.DienThoai" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ThuongHieu">
+        <PropertyRef Name="MaThuongHieu" />
+      </Principal>
+      <Dependent Role="DienThoai">
+        <PropertyRef Name="MaThuongHieu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="WebProgramming_HTAEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="DienThoais" EntityType="Self.DienThoai" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="ThuongHieux" EntityType="Self.ThuongHieu" />
+    <AssociationSet Name="FK_DienThoai_ThuongHieu" Association="Self.FK_DienThoai_ThuongHieu">
+      <End Role="ThuongHieu" EntitySet="ThuongHieux" />
+      <End Role="DienThoai" EntitySet="DienThoais" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

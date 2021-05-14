@@ -1,0 +1,11 @@
+﻿
+@{
+    var listMenu = (List<kiemtra.Models.ThuongHieu>)ViewBag.listMenu;
+}
+<ul class="container-content__navigation-name">
+    @foreach(var item in listMenu)
+    {
+    <li class="container-content__navigation-item"><a href="@Url.Action("Sanpham","Home",new { id=item.MaThuongHieu})">@item.TenThuongHieu</a></li>
+
+    }
+</ul>

@@ -1,0 +1,20 @@
+﻿@model List<kiemtra.Models.DienThoai>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+
+        <div class="col-lg-3 col-md-3 container-content__intension-bag">
+            <a href="" class="container-content__intension-link">
+                <img src="~/Content/image/@item.Anh" alt="" class="container-content__intension-img">
+                <p class="container-content__intension-name">@item.TenDienThoai</p>
+            </a>
+            <span class="container-content__intension-price">@item.GiaTien USD</span>
+        </div>
+    }
+</div>
+

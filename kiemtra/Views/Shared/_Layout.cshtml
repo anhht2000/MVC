@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baitap</title>
+    <link rel="stylesheet" href="/Content/font-awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/css/style.css">
+    <link rel="stylesheet" href="/Content/bootstrap/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="main">
+        <header class="main__header">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <p class="main__header-name">Hoàng Tuấn Anh MSSV:181211577</p>
+
+                </div>
+            </div>
+        </header>
+        <!-- logo -->
+        <div class="container-logo">
+            <div class="row">
+                <div class="col-lg-3 col-md-3">
+                    <div class="container-logo-left">LOGO</div>
+                </div>
+                <div class="col-lg-9 col-md-9">
+                    <div class="container-logo-right"></div>
+                </div>
+            </div>
+        </div>
+        <!-- content  -->
+        <div class="container-content">
+            <div class="row">
+                <div class="col-lg-9 col-md-9">
+                    <div class="container-content__intension">
+                        @RenderBody()
+                    </div>
+                   
+                </div>
+                <div class="col-lg-3 col-md-3">
+                    <div class="container-content__navigation">
+                        @Html.Action("LoadMenu","Render")
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- footer  -->
+        <footer class="main__footer">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <p class="main__footer-name">Class : CNTT1-k59</p>
+
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+<script src="/Content/font-awesome/js/all.min.js"></script>
+<script src="/Content/bootstrap/js/bootstrap.bundle.min.js"></script>
+</html>
